@@ -30,3 +30,9 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# sandboxing
+.Xauthority
+.bashrc
+.inputrc
+.npm
