@@ -2,18 +2,22 @@
 import { vOnClickOutside } from "@vueuse/components";
 import { HomeIcon, MonitorIcon, MoonStarIcon, SettingsIcon, SunIcon } from "lucide-vue-next";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { useThemeStore } from "@/features/theme-switch/model/theme.store";
 import Button from "@/shared/ui/button/Button.vue";
+import LanguageSwitch from "@/features/language-switch/ui/LanguageSwitch.vue";
+
+const { t } = useI18n();
 
 const nav = [
 	{
 		icon: HomeIcon,
-		name: "Home",
+		name: () => t('navigation.home'),
 		href: "/",
 	},
 	{
 		icon: SettingsIcon,
-		name: "Settings",
+		name: () => t('navigation.settings'),
 		href: "/settings",
 	},
 ];
@@ -31,15 +35,16 @@ function closeSwitcher() {
 		<div class="container flex h-full flex-row items-center">
 			<nav class="flex flex-row gap-2">
 				<RouterLink v-for="endpoint in nav" :key="endpoint.href" :to="endpoint.href">
-					<Button variant="outline" size="icon">
+					<Button variant="outline" size="icon" :title="endpoint.name()">
 						<component :is="endpoint.icon" class="size-4" />
 					</Button>
 				</RouterLink>
 			</nav>
 
 			<div class="flex flex-1 justify-end gap-2">
+				<LanguageSwitch />
 				<div v-on-click-outside="closeSwitcher" class="relative">
-					<Button variant="outline" size="icon" @click="isSwitcherOpen = !isSwitcherOpen">
+					<Button variant="outline" size="icon" @click="isSwitcherOpen = !isSwitcherOpen" :title="t('theme.toggle')">
 						<component :is="themeStore.isDark === true ? MoonStarIcon : SunIcon" class="size-4" />
 					</Button>
 
@@ -54,7 +59,7 @@ function closeSwitcher() {
 							@click="themeStore.setThemeDark"
 						>
 							<MoonStarIcon class="size-4" />
-							<span>Dark</span>
+							<span>{{ t('theme.dark') }}</span>
 						</Button>
 						<Button
 							size="sm"
@@ -63,7 +68,7 @@ function closeSwitcher() {
 							@click="themeStore.setThemeLight"
 						>
 							<SunIcon class="size-4" />
-							<span>Light</span>
+							<span>{{ t('theme.light') }}</span>
 						</Button>
 						<Button
 							size="sm"
@@ -72,7 +77,7 @@ function closeSwitcher() {
 							@click="themeStore.setThemeAuto"
 						>
 							<MonitorIcon class="size-4" />
-							<span>Auto</span>
+							<span>{{ t('theme.auto') }}</span>
 						</Button>
 					</div>
 				</div>

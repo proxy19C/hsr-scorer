@@ -5,5 +5,5 @@ export const STAGE_KEY = "stage" as const;
 
 export const START_SCREEN = "START_SCREEN" as const;
 export const EDITING_QUEUE = "EDITING_QUEUE" as const;
-export const IN_PROGRESS = "IN_PROGRSS" as const;
+export const IN_PROGRESS = "IN_PROGRESS" as const;
 export const FINISHED = "FINISHED" as const;

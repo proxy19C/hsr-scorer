@@ -2,6 +2,7 @@
 import { useThrottleFn } from "@vueuse/core";
 import { SkipForwardIcon, UndoIcon, XIcon } from "lucide-vue-next";
 import { computed, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { useCharacterCardsOptions } from "@/entities/character/model/stores";
 import type { Character } from "@/entities/character/model/types";
 import CharacterCard from "@/entities/character/ui/CharacterCard.vue";
@@ -10,6 +11,7 @@ import { useGame } from "@/features/game/model/store";
 
 const emit = defineEmits(["confirmReset"]);
 
+const { t } = useI18n();
 const game = useGame();
 const cardOptions = useCharacterCardsOptions();
 
@@ -75,8 +77,8 @@ watch(
 
 			<span class="text-muted-foreground text-sm sm:text-base">
 				<span>{{ game.queue.length }}</span>
-				<span class="hidden sm:inline"> pairs</span>
-				<span> left</span>
+				<span class="hidden sm:inline"> {{ t('game.progress.pairs') }}</span>
+				<span> {{ t('game.progress.left') }}</span>
 			</span>
 			<div className="flex items-center gap-4">
 				<Button variant="ghost" size="icon" @click="skipThrottled">

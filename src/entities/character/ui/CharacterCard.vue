@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { SparklesIcon } from "lucide-vue-next";
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { cn } from "@/shared/lib/cn";
+import { getCharacterNameByLocale } from "@/shared/lib/character-localization";
 import type { StarRailCharacter } from "../model/types";
 
 type Props = {
@@ -20,11 +22,17 @@ const props = withDefaults(defineProps<Props>(), {
 	class: "",
 });
 
+const { locale } = useI18n();
+
 const cssVars = computed(() => {
 	return {
 		"--top": props.character.rarity === 5 ? "hsl(5, 26%, 42%)" : "hsl(237, 26%, 28%)",
 		"--bottom": props.character.rarity === 5 ? "hsl(36, 47%, 60%)" : "hsl(264, 52%, 59%)",
 	};
+});
+
+const localizedCharacterName = computed(() => {
+	return getCharacterNameByLocale(props.character.name, locale.value);
 });
 </script>
 
@@ -72,7 +80,7 @@ const cssVars = computed(() => {
 					v-if="decoration"
 					class="absolute -top-2 -left-2.5 h-4 w-4 text-emerald-400 opacity-75"
 				/>
-				<span>{{ character.name }}</span>
+				<span>{{ localizedCharacterName }}</span>
 			</h3>
 			<p v-if="typeof textUnderName === 'string' && textUnderName.length > 0">
 				{{ textUnderName }}

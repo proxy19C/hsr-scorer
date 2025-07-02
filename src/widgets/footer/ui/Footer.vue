@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { IN_PROGRESS } from "@/features/game/config";
 import { useGame } from "@/features/game/model/store";
 import Link from "@/shared/ui/link/Link.vue";
 
+const { t } = useI18n();
 const game = useGame();
 </script>
 
@@ -13,8 +15,9 @@ const game = useGame();
 	>
 		<div class="border-border container py-6">
 			<p class="text-muted-foreground text-center text-sm text-balance md:text-left">
-				Built by a Honkai Star Rail player! The source code is available on
-				<Link href="https://github.com/Fyrefly-IV/hsr-scorer">GitHub</Link> for everyone.
+				{{ t('footer.builtBy') }}
+				<Link href="https://github.com/Fyrefly-IV/hsr-scorer">GitHub</Link>
+				{{ t('footer.forEveryone') }}
 			</p>
 		</div>
 	</footer>
