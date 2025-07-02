@@ -1,0 +1,131 @@
+{
+  "app": {
+    "title": "Honkai Scorer",
+    "description": "Compare and rank your favorite Honkai Star Rail characters in this strategic showdown."
+  },
+  "navigation": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "auto": "Auto",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "chinese": "中文",
+    "japanese": "日本語"
+  },
+  "home": {
+    "playNow": "Play Now",
+    "startModal": {
+      "title": "We're about to start!",
+      "description": "The process of comparing many characters might take a while!\nDon't worry, you can close the tab and come back to comparing whenever you feel like it!",
+      "cancel": "Cancel",
+      "proceed": "Proceed"
+    },
+    "errors": {
+      "tooSmallPool": "Character pool is too small! Please select at least 2 characters in settings.",
+      "generic": "An error occurred while starting the game. Please try again."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "characterCard": {
+      "title": "Character Card Display",
+      "showType": "Show Type",
+      "showTypeDesc": "Display character types on cards",
+      "showPaths": "Show Paths",
+      "showPathsDesc": "Display character paths on cards",
+      "both": "Both",
+      "element": "Element",
+      "path": "Path",
+      "none": "None"
+    },
+    "gameInProgress": {
+      "title": "You are currently in game!",
+      "description": "While a game is in progress changes to the character pool are not going to affect your current game."
+    },
+    "characterSelection": {
+      "title": "Character Selection",
+      "search": "Search Characters",
+      "searchPlaceholder": "Enter character name",
+      "reset": "Reset",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect All"
+    },
+    "warnings": {
+      "progressReset": "Changing character selection will reset your current progress.",
+      "resultsReset": "Changing character selection will reset your current results."
+    }
+  },
+  "game": {
+    "start": {
+      "title": "Ready to Start?",
+      "description": "Choose your preferred characters and begin the comparison!",
+      "startGame": "Start Game",
+      "progressNote": "You don't need to worry about the progress of the comparison; if you haven't disabled cookies or are not using incognito mode in your browser, each step is saved in the browser itself, and you will be able to return to this page to continue the process!",
+      "smallPoolWarning": {
+        "title": "Small Character Pool",
+        "description": "You have selected a very small number of characters. This might result in a short game. Are you sure you want to continue?",
+        "continue": "Continue",
+        "goBack": "Go Back"
+      }
+    },
+    "progress": {
+      "undo": "Undo",
+      "skip": "Skip",
+      "reset": "Reset",
+      "pairsLeft": "",
+      "pairs": "pairs",
+      "left": "left",
+      "confirmReset": {
+        "title": "Are you sure?",
+        "description": "You are about to completely reset current comparison progress!\nThis means, you will not be able to revert this action!",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+      }
+    },
+    "results": {
+      "title": "Results",
+      "mostChosen": "Most chosen character",
+      "mostChosenPlural": "Most chosen characters",
+      "showScores": "Click to view scores",
+      "hideScores": "Hide Scores",
+      "points": "points",
+      "playAgain": "Play Again",
+      "newGame": "New Game",
+      "reset": "Reset"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error!",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "remove": "Remove",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear",
+    "apply": "Apply",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "finish": "Finish",
+    "proceed": "Proceed",
+    "reset": "Reset"
+  },
+  "footer": {
+    "builtBy": "Built by a Honkai Star Rail player! The source code is available on",
+    "forEveryone": "for everyone."
+  }
+}

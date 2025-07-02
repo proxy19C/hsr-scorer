@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { getCharacterById } from "@/entities/character/data/characters";
 import type { Character } from "@/entities/character/model/types";
 import CharacterCard from "@/entities/character/ui/CharacterCard.vue";
@@ -9,6 +10,7 @@ import { useGame } from "@/features/game/model/store";
 
 const emit = defineEmits(["confirmReset"]);
 
+const { t } = useI18n();
 const game = useGame();
 
 const showScores = ref<boolean>(false);
@@ -47,7 +49,7 @@ const isWinnerId = (id: Character["id"]): boolean => {
 	<div class="flex w-full flex-col items-center">
 		<div class="flex max-w-[800px] flex-col">
 			<H2 class="mb-4 text-center font-bold">
-				Most chosen character<span v-if="winners.length > 1">s</span>
+				{{ winners.length > 1 ? t('game.results.mostChosenPlural') : t('game.results.mostChosen') }}
 			</H2>
 			<div class="mb-4 flex flex-row flex-wrap justify-center gap-2">
 				<CharacterCard
@@ -60,14 +62,14 @@ const isWinnerId = (id: Character["id"]): boolean => {
 			</div>
 
 			<Button variant="outline" class="w-fit self-center" @click="emit('confirmReset')">
-				Reset
+				{{ t('game.results.reset') }}
 			</Button>
 
 			<button
 				class="mt-6 w-fit self-center rounded-md px-2 py-1 text-sm text-neutral-600 hover:bg-neutral-700 hover:text-neutral-400"
 				@click="showScores = !showScores"
 			>
-				Click to view scores
+				{{ t('game.results.showScores') }}
 			</button>
 		</div>
 
@@ -79,7 +81,7 @@ const isWinnerId = (id: Character["id"]): boolean => {
 				v-for="(entry, i) in scores"
 				:key="`scores-${i}`"
 				:character="entry.character"
-				:text-under-name="`${entry.score} points`"
+				:text-under-name="`${entry.score} ${t('game.results.points')}`"
 				class="w-[150px] md:w-[170px] [&_h3]:text-base [&_p]:text-xs"
 				:decoration="isWinnerId(entry.character.id)"
 			/>

@@ -1,0 +1,131 @@
+{
+  "app": {
+    "title": "崩铁评分器",
+    "description": "比较并排名你最喜欢的崩坏：星穹铁道角色。"
+  },
+  "navigation": {
+    "home": "首页",
+    "settings": "设置"
+  },
+  "theme": {
+    "dark": "深色",
+    "light": "浅色",
+    "auto": "自动",
+    "toggle": "切换主题"
+  },
+  "language": {
+    "select": "选择语言",
+    "english": "English",
+    "chinese": "中文",
+    "japanese": "日本語"
+  },
+  "home": {
+    "playNow": "开始游戏",
+    "startModal": {
+      "title": "即将开始！",
+      "description": "比较众多角色的过程可能需要一些时间！\n别担心，你可以关闭标签页，随时回来继续比较！",
+      "cancel": "取消",
+      "proceed": "继续"
+    },
+    "errors": {
+      "tooSmallPool": "角色池太小！请在设置中选择至少2个角色。",
+      "generic": "启动游戏时发生错误，请重试。"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "characterCard": {
+      "title": "角色卡片显示",
+      "showType": "显示类型",
+      "showTypeDesc": "在卡片上显示角色属性",
+      "showPaths": "显示命途",
+      "showPathsDesc": "在卡片上显示角色命途",
+      "both": "两者",
+      "element": "属性",
+      "path": "命途",
+      "none": "无"
+    },
+    "gameInProgress": {
+      "title": "游戏进行中！",
+      "description": "游戏进行时，对角色池的更改不会影响当前游戏。"
+    },
+    "characterSelection": {
+      "title": "角色选择",
+      "search": "搜索角色",
+      "placeholder": "输入角色名称",
+      "reset": "重置",
+      "selectAll": "全选",
+      "deselectAll": "全不选"
+    },
+    "warnings": {
+      "progressReset": "更改角色选择将重置您当前的进度。",
+      "resultsReset": "更改角色选择将重置您当前的结果。"
+    }
+  },
+  "game": {
+    "start": {
+      "title": "准备开始？",
+      "description": "选择你喜欢的角色并开始比较！",
+      "startGame": "开始游戏",
+      "progressNote": "你无需担心比较的进度；如果你没有禁用cookies或使用浏览器的无痕模式，每一步都会保存在浏览器中，你可以随时回到这个页面继续进行！",
+      "smallPoolWarning": {
+        "title": "角色池较小",
+        "description": "你选择的角色数量很少，这可能导致游戏很快结束。确定要继续吗？",
+        "continue": "继续",
+        "goBack": "返回"
+      }
+    },
+    "progress": {
+      "undo": "撤销",
+      "skip": "跳过",
+      "reset": "重置",
+      "pairsLeft": "剩余",
+      "pairs": "对",
+      "left": "组",
+      "confirmReset": {
+        "title": "确定要重置吗？",
+        "description": "你即将完全重置当前的比较进度！\n这意味着，你将无法撤销此操作！",
+        "confirm": "确认",
+        "cancel": "取消"
+      }
+    },
+    "results": {
+      "title": "结果",
+      "mostChosen": "最受欢迎角色",
+      "mostChosenPlural": "最受欢迎角色",
+      "showScores": "点击查看分数",
+      "hideScores": "隐藏分数",
+      "points": "分",
+      "playAgain": "再玩一次",
+      "newGame": "新游戏",
+      "reset": "重置"
+    }
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误！",
+    "confirm": "确认",
+    "cancel": "取消",
+    "close": "关闭",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "remove": "移除",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "clear": "清除",
+    "apply": "应用",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "finish": "完成",
+    "proceed": "继续",
+    "reset": "重置"
+  },
+  "footer": {
+    "builtBy": "由崩坏：星穹铁道玩家制作！源代码已在",
+    "forEveryone": "上开源供所有人使用。"
+  }
+}
