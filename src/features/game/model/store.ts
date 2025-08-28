@@ -102,8 +102,8 @@ export const useGame = defineStore("the-game", () => {
 		});
 
 		queue.value = queueIds.map(([id1, id2]) => ({
-			firstId: id1,
-			secondId: id2,
+			firstId: id1 as NonNullable<typeof id1>,
+			secondId: id2 as NonNullable<typeof id2>,
 		}));
 
 		if (allowEdit === true) {

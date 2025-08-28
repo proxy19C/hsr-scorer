@@ -34,7 +34,7 @@ const winners = computed(() => {
 		return [];
 	}
 
-	const bestScore = scores.value[0].score;
+	const bestScore = scores.value[0]?.score;
 	return scores.value.filter((entry) => entry.score === bestScore);
 });
 
