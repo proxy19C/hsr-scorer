@@ -9,59 +9,62 @@ import type { Plugin } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx(), tailwind(), injectCssAsStyleTag(), removeStylesheetLinks()],
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-    },
-  },
-  build: {
-    cssCodeSplit: false,
-    outDir: "build",
-    rollupOptions: {
-      output: {
-        inlineDynamicImports: true,
-      },
-    },
-  },
+	plugins: [vue(), vueJsx(), tailwind(), injectCssAsStyleTag(), removeStylesheetLinks()],
+	resolve: {
+		alias: {
+			"@": fileURLToPath(new URL("./src", import.meta.url)),
+		},
+	},
+	build: {
+		cssCodeSplit: false,
+		outDir: "build",
+		rollupOptions: {
+			output: {
+				inlineDynamicImports: true,
+			},
+		},
+	},
+	server: {
+		host: "127.0.0.1",
+	},
 });
 
 function injectCssAsStyleTag(): Plugin {
-  return {
-    name: "inject-css-as-style-tags",
-    enforce: "post",
-    apply: "build",
-    transformIndexHtml(html, ctx) {
-      const htmlTagDescriptors: HtmlTagDescriptor[] = [];
-      const bundle = ctx.bundle;
-      if (bundle == null) {
-        return [];
-      }
+	return {
+		name: "inject-css-as-style-tags",
+		enforce: "post",
+		apply: "build",
+		transformIndexHtml(html, ctx) {
+			const htmlTagDescriptors: HtmlTagDescriptor[] = [];
+			const bundle = ctx.bundle;
+			if (bundle == null) {
+				return [];
+			}
 
-      Object.values(bundle)
-        .filter((output) => output.fileName.endsWith(".css"))
-        .forEach((output) => {
-          if (output.type === "asset" && typeof output.source === "string") {
-            htmlTagDescriptors.push({
-              tag: "style",
-              children: output.source,
-              injectTo: "head",
-            });
-          }
-        });
+			Object.values(bundle)
+				.filter((output) => output.fileName.endsWith(".css"))
+				.forEach((output) => {
+					if (output.type === "asset" && typeof output.source === "string") {
+						htmlTagDescriptors.push({
+							tag: "style",
+							children: output.source,
+							injectTo: "head",
+						});
+					}
+				});
 
-      return htmlTagDescriptors;
-    },
-  };
+			return htmlTagDescriptors;
+		},
+	};
 }
 
 function removeStylesheetLinks(): Plugin {
-  return {
-    name: "remove-stylesheet-links",
-    enforce: "post",
-    apply: "build",
-    transformIndexHtml(html, ctx) {
-      return html.replaceAll(/<link\s+rel="stylesheet"(\s.*\s)href="(.*)\.css">/gi, "");
-    },
-  };
+	return {
+		name: "remove-stylesheet-links",
+		enforce: "post",
+		apply: "build",
+		transformIndexHtml(html, ctx) {
+			return html.replaceAll(/<link\s+rel="stylesheet"(\s.*\s)href="(.*)\.css">/gi, "");
+		},
+	};
 }
