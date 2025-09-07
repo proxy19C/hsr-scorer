@@ -20,6 +20,33 @@ import type { StarRailCharacter } from "../model/types";
 
 export const STAR_RAIL_CHARACTERS: StarRailCharacter[] = [
 	{
+		id: "1412",
+		game: GAME_STAR_RAIL,
+		name: "Cerydra",
+		path: PATH_HARMONY,
+		type: TYPE_WIND,
+		rarity: 5,
+		assets: { portrait: "/img/hsr/portraits/1412.webp" },
+	},
+	{
+		id: "1410",
+		game: GAME_STAR_RAIL,
+		name: "Hysilens",
+		path: PATH_NIHILITY,
+		type: TYPE_PHYSICAL,
+		rarity: 5,
+		assets: { portrait: "/img/hsr/portraits/1410.webp" },
+	},
+	{
+		id: "1408",
+		game: GAME_STAR_RAIL,
+		name: "Phainon",
+		rarity: 5,
+		path: PATH_DESTRUCTION,
+		type: TYPE_PHYSICAL,
+		assets: { portrait: "/img/hsr/portraits/1408.webp" },
+	},
+	{
 		id: "1406",
 		game: GAME_STAR_RAIL,
 		name: "Cipher",
