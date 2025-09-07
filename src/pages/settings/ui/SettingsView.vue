@@ -1,3 +1,13 @@
+<script lang="ts">
+import type { StarRailCharacter } from "@/entities/character/model/types";
+
+export type Filter = {
+	id: string;
+	field: keyof StarRailCharacter;
+	value: string;
+};
+</script>
+
 <script setup lang="ts">
 import { useHead } from "@unhead/vue";
 import { refDebounced } from "@vueuse/core";
@@ -21,7 +31,6 @@ import CardHeader from "@/shared/ui/card/CardHeader.vue";
 import CardTitle from "@/shared/ui/card/CardTitle.vue";
 import CardContent from "@/shared/ui/card/CardContent.vue";
 import Label from "@/shared/ui/label/Label.vue";
-import type { Filter } from "../model/types";
 import { storeToRefs } from "pinia";
 
 const game = useGame();
