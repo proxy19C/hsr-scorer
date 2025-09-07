@@ -1,18 +1,6 @@
-<script lang="ts">
-import type { StarRailCharacter } from "@/entities/character/model/types";
-
-export type Filter = {
-	id: string;
-	field: keyof StarRailCharacter;
-	value: string;
-};
-</script>
-
 <script setup lang="ts">
 import { useHead } from "@unhead/vue";
-import { refDebounced } from "@vueuse/core";
 import { RefreshCwIcon } from "lucide-vue-next";
-import { computed, ref } from "vue";
 import { FILTERS } from "../config/filters";
 import { STAR_RAIL_CHARACTERS } from "@/entities/character/data/star-rail";
 import { useCharacterCardsOptions, useExcludedCharacters } from "@/entities/character/model/stores";
@@ -32,12 +20,22 @@ import CardTitle from "@/shared/ui/card/CardTitle.vue";
 import CardContent from "@/shared/ui/card/CardContent.vue";
 import Label from "@/shared/ui/label/Label.vue";
 import { storeToRefs } from "pinia";
+import { useFilters, type Filter } from "../model/use-filters";
 
 const game = useGame();
 const cardOptions = useCharacterCardsOptions();
 
 const settings = useExcludedCharacters();
 const { excludedIds } = storeToRefs(settings);
+
+const {
+	displayedCharacters,
+	hsrSearchValue,
+	isFilterActive,
+	disableFilter,
+	resetFilters,
+	enableFilter,
+} = useFilters();
 
 const characterClickHandler = (id: Character["id"]) => {
 	if (!settings.isExcludedId(id)) {
@@ -55,28 +53,6 @@ function deselectAllCharacters() {
 	excludedIds.value = STAR_RAIL_CHARACTERS.map((character) => character.id);
 }
 
-const hsrSearchValue = ref<string>("");
-const hsrSearchDebounced = refDebounced(hsrSearchValue, 200);
-
-const activeFilters = ref<Filter[]>([]);
-
-function isFilterActive(filterId: Filter["id"]) {
-	return activeFilters.value.some((activeFilter) => activeFilter.id === filterId);
-}
-
-function enableFilter(filter: Filter) {
-	activeFilters.value.push(filter);
-}
-
-function disableFilter(filterId: string) {
-	activeFilters.value = activeFilters.value.filter((filter) => filter.id !== filterId);
-}
-
-function resetFilters() {
-	hsrSearchValue.value = "";
-	activeFilters.value = [];
-}
-
 function handleFilterClick(filter: Filter) {
 	if (isFilterActive(filter.id)) {
 		disableFilter(filter.id);
@@ -84,36 +60,6 @@ function handleFilterClick(filter: Filter) {
 		enableFilter(filter);
 	}
 }
-
-const displayedCharacters = computed(() => {
-	const fieldGroups = activeFilters.value.reduce((groups, { field, value }) => {
-		if (!groups.has(field)) {
-			groups.set(field, new Set<string>());
-		}
-
-		groups.get(field)!.add(value);
-
-		return groups;
-	}, new Map<Filter["field"], Set<string>>());
-
-	return STAR_RAIL_CHARACTERS.filter((character) => {
-		const searchActive = hsrSearchDebounced.value.trim().length > 0;
-		const matchesSearch = searchActive
-			? character.name.toLowerCase().includes(hsrSearchDebounced.value.trim().toLowerCase())
-			: true;
-
-		const filtersActive = fieldGroups.size > 0;
-
-		const matchesFieldFilters =
-			!filtersActive ||
-			Array.from(fieldGroups.entries()).some(([field, allowedValues]) => {
-				const charValue = character[field as keyof Character];
-				return allowedValues.has(charValue as string);
-			});
-
-		return matchesSearch && matchesFieldFilters;
-	});
-});
 
 useHead({
 	title: "Honkai Scorer | Settings",
