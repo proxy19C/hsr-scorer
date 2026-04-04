@@ -15,7 +15,7 @@ import {
 	TYPE_QUANTUM,
 	TYPE_WIND,
 } from "@/entities/character/config/constants";
-import type { Filter } from "../model/types";
+import type { Filter } from "../model/use-filters";
 
 export const FILTERS: Filter[] = [
 	{
