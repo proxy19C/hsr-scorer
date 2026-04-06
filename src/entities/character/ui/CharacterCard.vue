@@ -72,7 +72,7 @@ const cssVars = computed(() => {
 					v-if="decoration"
 					class="absolute -top-2 -left-2.5 h-4 w-4 text-emerald-400 opacity-75"
 				/>
-				<span>{{ character.name }}</span>
+				<span>{{ $t(`characters.${character.id}`) ?? character.name }}</span>
 			</h3>
 			<p v-if="typeof textUnderName === 'string' && textUnderName.length > 0">
 				{{ textUnderName }}
