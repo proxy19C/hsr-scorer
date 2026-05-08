@@ -19,10 +19,10 @@ const nav = [
 ];
 
 const themeStore = useThemeStore();
-const isSwitcherOpen = ref(false);
+const isThemeSwitcherOpen = ref(false);
 
-function closeSwitcher() {
-	isSwitcherOpen.value = false;
+function closeThemeSwitcher() {
+	isThemeSwitcherOpen.value = false;
 }
 </script>
 
@@ -38,13 +38,13 @@ function closeSwitcher() {
 			</nav>
 
 			<div class="flex flex-1 justify-end gap-2">
-				<div v-on-click-outside="closeSwitcher" class="relative">
-					<Button variant="outline" size="icon" @click="isSwitcherOpen = !isSwitcherOpen">
+				<div v-on-click-outside="closeThemeSwitcher" class="relative">
+					<Button variant="outline" size="icon" @click="isThemeSwitcherOpen = !isThemeSwitcherOpen">
 						<component :is="themeStore.isDark === true ? MoonStarIcon : SunIcon" class="size-4" />
 					</Button>
 
 					<div
-						v-if="isSwitcherOpen"
+						v-if="isThemeSwitcherOpen"
 						class="border-border bg-background absolute right-0 mt-2 grid grid-flow-row grid-cols-[1fr] gap-0.5 rounded-md border p-2"
 					>
 						<Button
