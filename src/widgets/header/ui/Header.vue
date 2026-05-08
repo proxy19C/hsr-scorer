@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { vOnClickOutside } from "@vueuse/components";
-import { HomeIcon, MonitorIcon, MoonStarIcon, SettingsIcon, SunIcon } from "lucide-vue-next";
-import { ref } from "vue";
-import { useThemeStore } from "@/features/theme-switch/model/theme.store";
+import { HomeIcon, SettingsIcon } from "lucide-vue-next";
 import Button from "@/shared/ui/button/Button.vue";
+import ThemeSwitchButton from "@/features/theme-switch/ui/ThemeSwitchButton.vue";
 
 const nav = [
 	{
@@ -17,13 +15,6 @@ const nav = [
 		href: "/settings",
 	},
 ];
-
-const themeStore = useThemeStore();
-const isThemeSwitcherOpen = ref(false);
-
-function closeThemeSwitcher() {
-	isThemeSwitcherOpen.value = false;
-}
 </script>
 
 <template>
@@ -38,44 +29,7 @@ function closeThemeSwitcher() {
 			</nav>
 
 			<div class="flex flex-1 justify-end gap-2">
-				<div v-on-click-outside="closeThemeSwitcher" class="relative">
-					<Button variant="outline" size="icon" @click="isThemeSwitcherOpen = !isThemeSwitcherOpen">
-						<component :is="themeStore.isDark === true ? MoonStarIcon : SunIcon" class="size-4" />
-					</Button>
-
-					<div
-						v-if="isThemeSwitcherOpen"
-						class="border-border bg-background absolute right-0 mt-2 grid grid-flow-row grid-cols-[1fr] gap-0.5 rounded-md border p-2"
-					>
-						<Button
-							size="sm"
-							variant="ghost"
-							class="items-center justify-start gap-2"
-							@click="themeStore.setThemeDark"
-						>
-							<MoonStarIcon class="size-4" />
-							<span>Dark</span>
-						</Button>
-						<Button
-							size="sm"
-							variant="ghost"
-							class="items-center justify-start gap-2"
-							@click="themeStore.setThemeLight"
-						>
-							<SunIcon class="size-4" />
-							<span>Light</span>
-						</Button>
-						<Button
-							size="sm"
-							variant="ghost"
-							class="items-center justify-start gap-2"
-							@click="themeStore.setThemeAuto"
-						>
-							<MonitorIcon class="size-4" />
-							<span>Auto</span>
-						</Button>
-					</div>
-				</div>
+				<ThemeSwitchButton />
 			</div>
 		</div>
 	</header>
