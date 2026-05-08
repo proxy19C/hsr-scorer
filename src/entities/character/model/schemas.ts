@@ -3,6 +3,7 @@ import { GameSchema } from "@/shared/model/schemas";
 import {
 	PATH_ABUNDANCE,
 	PATH_DESTRUCTION,
+	PATH_ELATION,
 	PATH_ERUDITION,
 	PATH_HARMONY,
 	PATH_HUNT,
@@ -40,6 +41,7 @@ export const StarRailPathsSchema = z.union([
 	z.literal(PATH_NIHILITY),
 	z.literal(PATH_PRESERVATION),
 	z.literal(PATH_REMEMBRANCE),
+	z.literal(PATH_ELATION),
 ]);
 
 export const StarRailTypesSchema = z.union([
