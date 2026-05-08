@@ -66,7 +66,7 @@ export const useFilters = () => {
 		hsrSearchValue,
 		hsrSearchDebounced,
 		activeFilters,
-        displayedCharacters,
+		displayedCharacters,
 		isFilterActive,
 		enableFilter,
 		disableFilter,
