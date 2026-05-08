@@ -1,0 +1,70 @@
+version: "3"
+
+vars:
+  BEFORE_DATE:
+    sh: date -d "20 days ago" +"%Y-%m-%d"
+
+  JAIL: >-
+    bwrap
+    --ro-bind / /
+    --tmpfs /tmp
+    --dev /dev
+    --proc /proc
+    --tmpfs /home
+    --bind . {{.ROOT_DIR}}
+    --chdir {{.ROOT_DIR}}
+    --unshare-user
+    --unshare-pid
+    --unshare-uts
+    --hostname devenv
+    --die-with-parent
+
+  NPM: '{{.JAIL}} npm --cache="./.npm/"'
+
+tasks:
+  install:
+    desc: Install dependencies
+    cmds:
+      - "{{.NPM}} install"
+
+  add:
+    desc: Add a dependency
+    cmds:
+      - "{{.NPM}} install {{.CLI_ARGS}}"
+
+  remove:
+    desc: Remove a dependency
+    cmds:
+      - "{{.NPM}} remove {{.CLI_ARGS}}"
+
+  ci:
+    desc: Clean install dependencies
+    cmds:
+      - "{{.NPM}} ci"
+
+  dev:
+    desc: Run the dev server
+    interactive: true
+    ignore_error: true
+    cmds:
+      - "{{.NPM}} run dev -- {{.CLI_ARGS}}"
+
+  build:
+    desc: Build the project
+    cmds:
+      - "{{.NPM}} run build"
+
+  build-dev:
+    desc: Build the project for development
+    cmds:
+      - "{{.NPM}} run build:dev"
+
+  audit:
+    desc: Run npm audit
+    cmds:
+      - "{{.NPM}} audit"
+
+  outdated:
+    desc: Check for outdated dependencies
+    cmds:
+      - "{{.NPM}} outdated"
