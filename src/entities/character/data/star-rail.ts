@@ -15,10 +15,20 @@ import {
 	PATH_NIHILITY,
 	PATH_PRESERVATION,
 	PATH_REMEMBRANCE,
+	PATH_ELATION,
 } from "../config/constants";
 import type { StarRailCharacter } from "../model/types";
 
 export const STAR_RAIL_CHARACTERS: StarRailCharacter[] = [
+	{
+		id: "1506",
+		game: GAME_STAR_RAIL,
+		name: "Silver Wolf LV.999",
+		path: PATH_ELATION,
+		type: TYPE_IMAGINARY,
+		rarity: 5,
+		assets: { portrait: "/img/hsr/portraits/1506.webp" },
+	},
 	{
 		id: "1412",
 		game: GAME_STAR_RAIL,
