@@ -58,7 +58,10 @@ function start() {
 				</Button>
 				<RouterLink to="/settings">
 					<Button variant="outline">
-						<Settings2Icon class="mr-2 h-4 w-4" /><span class="leading-none">Settings</span>
+						<Settings2Icon class="mr-2 h-4 w-4" />
+						<span class="leading-none">
+							{{ $t("ui.common.settings") }}
+						</span>
 					</Button>
 				</RouterLink>
 			</CardFooter>
