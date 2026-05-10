@@ -2,6 +2,7 @@
 import { HomeIcon, SettingsIcon } from "lucide-vue-next";
 import Button from "@/shared/ui/button/Button.vue";
 import ThemeSwitchButton from "@/features/theme-switch/ui/ThemeSwitchButton.vue";
+import LanguageSwitchButton from "@/features/i18n/ui/LanguageSwitchButton.vue";
 
 const nav = [
 	{
@@ -30,6 +31,7 @@ const nav = [
 
 			<div class="flex flex-1 justify-end gap-2">
 				<ThemeSwitchButton />
+				<LanguageSwitchButton />
 			</div>
 		</div>
 	</header>
