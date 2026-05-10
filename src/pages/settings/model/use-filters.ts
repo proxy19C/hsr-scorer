@@ -2,6 +2,7 @@ import { STAR_RAIL_CHARACTERS } from "@/entities/character/data/star-rail";
 import type { Character, StarRailCharacter } from "@/entities/character/model/types";
 import { refDebounced } from "@vueuse/core";
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 export type Filter = {
 	id: string;
@@ -14,6 +15,16 @@ export const useFilters = () => {
 	const hsrSearchDebounced = refDebounced(hsrSearchValue, 200);
 
 	const activeFilters = ref<Filter[]>([]);
+
+	const { t } = useI18n();
+
+	const charactersNames = computed(() =>
+		STAR_RAIL_CHARACTERS.reduce<Record<string, string>>((acc, c) => {
+			acc[c.id] = t(`characters.${c.id}`, c.name);
+
+			return acc;
+		}, {}),
+	);
 
 	const displayedCharacters = computed(() => {
 		const fieldGroups = activeFilters.value.reduce((groups, { field, value }) => {
@@ -28,8 +39,10 @@ export const useFilters = () => {
 
 		return STAR_RAIL_CHARACTERS.filter((character) => {
 			const searchActive = hsrSearchDebounced.value.trim().length > 0;
+			const characterName = charactersNames.value[character.id];
+
 			const matchesSearch = searchActive
-				? character.name.toLowerCase().includes(hsrSearchDebounced.value.trim().toLowerCase())
+				? characterName.toLowerCase().includes(hsrSearchDebounced.value.trim().toLowerCase())
 				: true;
 
 			const filtersActive = fieldGroups.size > 0;
