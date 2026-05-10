@@ -1,7 +1,38 @@
 {
 	"ui": {
 		"common": {
-			"settings": "設定"
+			"settings": "設定",
+			"reset": "リセット",
+			"clear": "クリア",
+			"selectAll": "すべて選択",
+			"deselectAll": "すべて解除"
+		},
+		"pages": {
+			"settings": {
+				"sections": {
+					"card": {
+						"title": "キャラクターカードの表示設定"
+					},
+					"characters": {
+						"title": "キャラクター選択",
+						"filters": {
+							"name": "キャラクター名を入力"
+						}
+					}
+				},
+				"toggles": {
+					"card": {
+						"type": {
+							"title": "戦闘属性表示",
+							"description": "カード上にキャラクターの戦闘属性を表示します。"
+						},
+						"path": {
+							"title": "運命表示",
+							"description": "カード上にキャラクターの運命を表示します。"
+						}
+					}
+				}
+			}
 		}
 	},
 	"characters": {

@@ -1,7 +1,38 @@
 {
 	"ui": {
 		"common": {
-			"settings": "Settings"
+			"settings": "Settings",
+			"reset": "Reset",
+			"clear": "Clear",
+			"selectAll": "Select all",
+			"deselectAll": "Deselect all"
+		},
+		"pages": {
+			"settings": {
+				"sections": {
+					"card": {
+						"title": "Character Card Display"
+					},
+					"characters": {
+						"title": "Character Selection",
+						"filters": {
+							"name": "Enter character's name"
+						}
+					}
+				},
+				"toggles": {
+					"card": {
+						"type": {
+							"title": "Show Type",
+							"description": "Display character types on cards"
+						},
+						"path": {
+							"title": "Show Paths",
+							"description": "Display character paths on cards"
+						}
+					}
+				}
+			}
 		}
 	},
 	"characters": {

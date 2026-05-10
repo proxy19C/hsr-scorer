@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useHead } from "@unhead/vue";
-import { RefreshCwIcon } from "lucide-vue-next";
+import { BrushCleaningIcon, SquareCheckBigIcon, SquareIcon } from "lucide-vue-next";
 import { FILTERS } from "../config/filters";
 import { STAR_RAIL_CHARACTERS } from "@/entities/character/data/star-rail";
 import { useCharacterCardsOptions, useExcludedCharacters } from "@/entities/character/model/stores";
@@ -68,25 +68,31 @@ useHead({
 
 <template>
 	<main class="min-h-svh-main container mx-auto py-4">
-		<h1 class="mb-6 text-3xl font-bold">Settings</h1>
+		<h1 class="mb-6 text-3xl font-bold">{{ $t("ui.common.settings") }}</h1>
 
 		<Card class="mb-6">
 			<CardHeader>
-				<CardTitle class="text-2xl font-semibold">Character Card Display</CardTitle>
+				<CardTitle class="text-2xl font-semibold">
+					{{ $t("ui.pages.settings.sections.card.title") }}
+				</CardTitle>
 			</CardHeader>
 			<CardContent class="flex flex-col items-start space-y-6">
 				<Label class="flex items-center justify-center gap-4">
 					<Switch v-model="cardOptions.showTypes" />
 					<div>
-						<span class="font-medium">Show Type</span>
-						<p class="text-muted-foreground text-sm">Display character types on cards</p>
+						<span class="font-medium">{{ $t("ui.pages.settings.toggles.card.type.title") }}</span>
+						<p class="text-muted-foreground text-sm">
+							{{ $t("ui.pages.settings.toggles.card.type.description") }}
+						</p>
 					</div>
 				</Label>
 				<Label class="flex items-center justify-center gap-4">
 					<Switch v-model="cardOptions.showPaths" />
 					<div>
-						<span class="font-medium">Show Paths</span>
-						<p class="text-muted-foreground text-sm">Display character paths on cards</p>
+						<span class="font-medium">{{ $t("ui.pages.settings.toggles.card.path.title") }}</span>
+						<p class="text-muted-foreground text-sm">
+							{{ $t("ui.pages.settings.toggles.card.path.description") }}
+						</p>
 					</div>
 				</Label>
 			</CardContent>
@@ -106,20 +112,31 @@ useHead({
 
 		<Card>
 			<CardHeader>
-				<CardTitle class="text-2xl font-semibold">Character Selection</CardTitle>
+				<CardTitle class="text-2xl font-semibold">
+					{{ $t("ui.pages.settings.sections.characters.title") }}
+				</CardTitle>
 			</CardHeader>
 			<CardContent>
 				<div class="mb-4 flex gap-x-2">
-					<Input v-model="hsrSearchValue" placeholder="Enter character name" />
+					<Input
+						v-model="hsrSearchValue"
+						:placeholder="$t('ui.pages.settings.sections.characters.filters.name')"
+					/>
 					<Button variant="secondary" @click="resetFilters">
-						<RefreshCwIcon />
-						<span>Reset</span>
+						<BrushCleaningIcon />
+						<span>{{ $t("ui.common.clear") }}</span>
 					</Button>
 				</div>
 
 				<div class="mb-6 flex flex-wrap gap-2">
-					<Button variant="secondary" @click="selectAllCharacters()">Select All</Button>
-					<Button variant="secondary" @click="deselectAllCharacters()">Deselect All</Button>
+					<Button variant="secondary" @click="selectAllCharacters()">
+						<SquareCheckBigIcon />
+						{{ $t("ui.common.selectAll") }}
+					</Button>
+					<Button variant="secondary" @click="deselectAllCharacters()">
+						<SquareIcon />
+						{{ $t("ui.common.deselectAll") }}
+					</Button>
 
 					<Button
 						v-for="filter in FILTERS"
