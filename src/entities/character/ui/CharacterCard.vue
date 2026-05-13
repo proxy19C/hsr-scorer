@@ -67,7 +67,7 @@ const cssVars = computed(() => {
 			v-if="hideName !== true"
 			class="absolute right-0 bottom-0 left-0 flex w-full flex-col items-center bg-black/50 pt-3 pb-3.5 has-[p]:pt-2 has-[p]:pb-2.5"
 		>
-			<h3 class="font-anuphane relative text-lg leading-none font-semibold text-white">
+			<h3 class="font-anuphane relative text-lg leading-none font-semibold text-balance text-white">
 				<SparklesIcon
 					v-if="decoration"
 					class="absolute -top-2 -left-2.5 h-4 w-4 text-emerald-400 opacity-75"
