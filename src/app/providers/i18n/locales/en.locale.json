@@ -109,13 +109,21 @@
 		"1413": "Evernight",
 		"1414": "Dan Heng • Permansor Terrae",
 		"1415": "Cyrene",
-		"8001": "Caelus",
-		"8002": "Stelle",
 		"1501": "Sparxie",
 		"1502": "Yao Guang",
 		"1505": "Evanescia",
 		"1504": "Ashveil",
 		"firefly": "Firefly",
-		"1506": "Silver Wolf LV.999"
+		"1506": "Silver Wolf LV.999",
+		"8010": "Stelle (Elation)", 
+		"8009": "Caelus (Elation)",
+		"8008": "Stelle (Remembrance)",
+		"8007": "Caelus (Remembrance)",
+		"8006": "Stelle (Harmony)",
+		"8005": "Caelus (Harmony)",
+		"8004": "Stelle (Preservation)",
+		"8003": "Caelus (Preservation)",
+		"8002": "Stelle (Destruction)",
+		"8001": "Caelus (Destruction)"
 	}
 }
